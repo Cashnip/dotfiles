@@ -18,9 +18,20 @@ opt.hlsearch = false
 opt.number = true
 opt.relativenumber = true
 opt.termguicolors = true
-opt.colorcolumn = '100'
+opt.colorcolumn = '0'
 opt.cmdheight = 1
 opt.scrolloff = 10
 opt.completeopt = "menuone,noinsert,noselect"
 
-vim.keymap.set("n", "<leader>f", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>f", "<cmd>Oil<cr>")
+
+
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+vim.keymap.set ("x", "<leader>p", "\"_dP")

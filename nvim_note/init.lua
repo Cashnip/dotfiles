@@ -1,5 +1,4 @@
 require ("config.lazy")
 require ("config.options")
 
-vim.lsp.enable('luals')
-vim.diagnostic.config {virtual_text = true}
+vim.diagnostic.config ({virtual_text = { current_line = true }})

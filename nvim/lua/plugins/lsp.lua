@@ -12,39 +12,35 @@ return {
       },
     },
   },
+
   config = function()
     local capabilities = require('blink.cmp').get_lsp_capabilities()
-    vim.lsp.config('*', {capabilities=capabilities});
-    vim.lsp.config.pyright = ({
+    vim.lsp.config('*', {capabilities=capabilities})
+
+    vim.lsp.config.ruff = ({
+      init_options = {
+        settings = {
+          logLevel = "error",
+          lint = {
+            exclude= { "TCH" },
+          }
+        }
+      }
+    })
+    vim.lsp.config.basedpyright = ({
       settings = {
-        pyright = {
-          disableOrganizeImports = true, -- Ruff handles import organization
-        },
-        python = {
+        basedpyright = {
           analysis = {
-            ignore = { '*' }, -- Use Ruff for linting
+            autoSearchPaths = true,
+            useLibraryCodeForTypes = true,
+            autoImportCompletions = true,
+            typeCheckingMode = "basic",
           },
         },
       },
-      filetypes = { 'py' },
     })
 
-    -- require("lspconfig").pyright.setup {
-    --   settings = {
-    --     pyright = {
-    --       disableOrganizeImports = true, -- Ruff handles import organization
-    --     },
-    --     python = {
-    --       analysis = {
-    --         ignore = { '*' }, -- Use Ruff for linting
-    --       },
-    --     },
-    --   },
-    --   capabilities = capabilities,
-    -- }
 
-    -- require("lspconfig").ruff.setup{}
-    vim.lsp.config.ruff = ({})
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup('lsp_attach_disable_ruff_hover', { clear = true }),
       callback = function(args)

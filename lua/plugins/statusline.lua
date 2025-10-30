@@ -1,11 +1,10 @@
-return {
-  "tjdevries/express_line.nvim",
-  lazy = false,
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-  },
-  keys={},
-  config = function()
-    require('el').setup{}
-  end,
+return{
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    lazy = false,
+    config = function()
+      require("lualine").setup()
+    end,
+  }
 }

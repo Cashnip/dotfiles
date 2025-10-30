@@ -4,6 +4,8 @@ return {
     ---@module 'oil'
     ---@type oil.SetupOpts
     opts = {},
+    -- Optional dependencies
     dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    lazy = false,
   }
 }
